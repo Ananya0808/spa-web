@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>Single Page Application using JavaScript</title>
+        <link rel="stylesheet" href= "style.css">
+	</head>	
+	<script>
+	var pages = {
+		'home' : `Welcome to XYZ Company. This is our home page!<br/><br/>`,
+		'aboutus' : `Our About Us page<br/><br/>`,
+		'services' : `Our Services page<br/><br/>`,
+		'contact' : `<div class="form-container">
+            <div class="heading-container">
+                <h2>Contact Us</h2>
+            </div>
+            <form action="submit.html" method="post">
+                <div><input placeholder = "Full Name" type = "text"></div>
+                <div><input placeholder = "Email" type = "text"></div>
+                <div><input placeholder = "Phone Number" type = "text"></div>
+                <div><input class = "message-box" placeholder="Message" type = "text"></div>
+                <div class="d-flex"><button>SEND</button></div>
+            </form>
+        </div>`
+	};
+
+	function getPageContent(page){
+		var contentToReturn;
+		switch(page){
+			case 'home':
+				contentToReturn = pages.home;
+				break;
+			case 'aboutus':
+				contentToReturn = pages.aboutus;
+				break;
+			case 'services':
+				contentToReturn = pages.services;
+				break;
+			case 'contact':
+				contentToReturn = pages.contact;
+				break;
+			default:
+				contentToReturn = pages.home;
+				break;				
+		}
+		document.getElementById('content').innerHTML = contentToReturn; 
+	}
+	</script>
+<body onload="getPageContent('home')">
+
+	<div style="width:10%; float: left;background: #eee;height: 100%;">
+		<ul>
+			<li style="line-height: 50px;">
+				<a href="#" onclick="getPageContent('home')">
+					Home
+				</a>
+			</li>
+			<li style="line-height: 50px;">
+				<a href="#" onclick="getPageContent('aboutus')">
+					About Us
+				</a>
+			</li>
+			<li style="line-height: 50px;">
+				<a href="#" onclick="getPageContent('services')">
+					Services
+				</a>
+			</li>
+			<li style="line-height: 50px;">
+				<a href="#" onclick="getPageContent('contact')">
+					Contact
+				</a>
+			</li>
+		</ul>
+
+	</div>
+<div style="width: 90%;float: right; background: #999;color:#fff; height: 100%;font-size: 50px;"><p style="margin-left: 50px;" id="content"><p></div>
+</body>
+
+</html>
